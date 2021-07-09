@@ -13,37 +13,66 @@
  * 
  */
 
+ /**
+ *  Attempt 1
+ * 
+ *  Complexity: O(n^2)
+ *  Space:      O(n)
+ * 
+ */
 function SumChecker( $list = array(), $sum){
 
-    /**
-     *  Attempt 1
-     * 
-     *  Complexity: O(n^2)
-     *  Space:      O(n^2)
-     * 
-     */
     $foundIt = FALSE;
     for($i=0; $i<sizeof($list); $i++){
         for($j=0; $j<sizeof($list); $j++){
             if($i===$j){
                 continue;
-            }elseif( ($list[$i]+$list[$j])==$sum){
+            }elseif( ($list[$i]+$list[$j])==$sum){  
                 $foundIt = TRUE;
                 break;
             }
-
         }
     }
+    return $foundIt;
+}
 
+/**
+ *  Attempt 2
+ * 
+ *  Complexity: O(n)
+ *  Space:      O(n)
+ * 
+ */
+function SumChecker2( $list = array(), $sum){
+
+    $foundIt = FALSE;
+
+    foreach($list as $listItem){
+        /** 
+         * in_array(mixed $needle, array $haystack, bool $strict = false): bool
+        *  needle in haystack search array for difference between current list item
+        * and sum we are seaching for.
+        */
+        if( in_array( abs($listItem-$sum), $list ) ){
+            $foundIt = TRUE;
+            break;
+        }else
+            echo ($listItem-$sum). "--";
+    }
     return $foundIt;
 }
 
 $testList = array (10, 15, 3, 7);
+$testInt = 25;
 
-var_dump($testList);
+echo "Testing sum $testInt in this list: [";
+foreach($testList as $item){ echo $item.", "; }
+echo chr(8).chr(8)."] \n";                            // double backspace removes last comma chr(8)chr(8)
 
-$inThere = SumChecker($testList, 25);
 
-echo ($inThere ? "True" : "False");
+echo (SumChecker($testList, 25) ? "True" : "False");
+echo "\n";
+echo (SumChecker2($testList, 25) ? "True" : "False");
+echo "\n";
 
 ?>
