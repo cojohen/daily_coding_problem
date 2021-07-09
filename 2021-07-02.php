@@ -59,7 +59,7 @@ $testInt = 11;
 
 echo "Testing sum $testInt in this list: [";
 foreach($testList as $item){ echo $item.", "; }
-echo chr(8).chr(8)."] \n";                            // double backspace removes last comma chr(8)chr(8)
+echo chr(8).chr(8)."] \n";       // double backspace removes last comma chr(8)chr(8)
 
 echo (SumChecker($testList, 25) ? "True" : "False");
 echo "\n";
