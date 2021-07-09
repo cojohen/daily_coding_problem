@@ -1,6 +1,5 @@
 <?php
 /**
- *      
  *      PROBLEM:
  *      
  *      Given a list of numbers and a number k, return 
@@ -10,14 +9,11 @@
  *      return true since 10 + 7 is 17.
  * 
  *      Bonus: Can you do this in one pass?
- * 
  */
-
  /**
- *  Attempt 1
+ *      Attempt 1
  * 
- *  Complexity: O(n^2)
- *  Space:      O(n)
+ *      Complexity: O(n^2)
  * 
  */
 function SumChecker( $list = array(), $sum){
@@ -37,11 +33,10 @@ function SumChecker( $list = array(), $sum){
 }
 
 /**
- *  Attempt 2
+ *      Attempt 2
  * 
- *  Complexity: O(n)
- *  Space:      O(n)
- * 
+ *      Complexity: O(n)
+ *      
  */
 function SumChecker2( $list = array(), $sum){
 
@@ -50,25 +45,21 @@ function SumChecker2( $list = array(), $sum){
     foreach($list as $listItem){
         /** 
          * in_array(mixed $needle, array $haystack, bool $strict = false): bool
-        *  needle in haystack search array for difference between current list item
-        * and sum we are seaching for.
         */
-        if( in_array( abs($listItem-$sum), $list ) ){
+        if(in_array(abs($listItem-$sum), $list)){
             $foundIt = TRUE;
             break;
-        }else
-            echo ($listItem-$sum). "--";
+        }
     }
     return $foundIt;
 }
 
-$testList = array (10, 15, 3, 7);
-$testInt = 25;
+$testList = array (4, 22, 10, 15, 3, 7);
+$testInt = 11;
 
 echo "Testing sum $testInt in this list: [";
 foreach($testList as $item){ echo $item.", "; }
 echo chr(8).chr(8)."] \n";                            // double backspace removes last comma chr(8)chr(8)
-
 
 echo (SumChecker($testList, 25) ? "True" : "False");
 echo "\n";
