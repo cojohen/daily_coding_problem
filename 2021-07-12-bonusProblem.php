@@ -36,24 +36,27 @@ class Solution {
 
         $i = 0;
         $greatestCount = 0;
-
+        $greatestRepeat = 0;
         foreach($searchStr as $char){
             if(isset($alphTable[$char])){
                 $greatestCount=( ($i-$alphTable[$char]) > $greatestCount ? ($i-$alphTable[$char]) : $greatestCount);
+                //$greatestCount=( ( $i-$greatestRepeat > $greatestCount )? $i-$greatestRepeat : $greatestCount);
+                //$greatestRepeat = ($alphTable[$char]>1 ? $alphTable[$char] : 0 );
             }
             $alphTable[$char] = $i;
             $i++;
         }
 
-        return $greatestCount;
+        
+        return ($greatestCount==0 ? strlen($s) : $greatestCount);
     }
 }
 
 /**
  *  Testing solution
  */
-$a = 'abcabcbb';
-$b = 'bbbbb';
+$a = 'ab';
+$b = 'aab';
 $c = 'pwwkqwertyuiopasdfghjk';
 
 $solution = new Solution();
