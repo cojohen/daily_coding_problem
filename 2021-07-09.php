@@ -28,7 +28,7 @@
  /**
   *     Class for binary tree node
   */
- public class BinaryNode
+ class BinaryNode
  {
     public $value;
     public $left;
@@ -50,7 +50,7 @@
 /**
  *     Class for binary tree
 */
- public class BinaryTree
+ class BinaryTree
  {
     private Node $root;
 
